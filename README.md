@@ -58,3 +58,14 @@ ESP8266 bertindak sebagai master dan Arduino bertindak sebagai slave dengan addr
 - Publish message : `0-255.0-255.0-255`
 - Type : String (red.green.blue)
 - Example : `255.0.100`
+
+<hr />
+
+## Dokumentasi Flutter
+
+- Packages :
+  1. flutter_bloc
+  2. bloc
+  3. go_router
+  4. mqtt_client
+  5. get_it
