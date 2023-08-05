@@ -28,36 +28,47 @@ ESP8266 bertindak sebagai master dan Arduino bertindak sebagai slave dengan addr
 
 - Broker : `broker.hivemq.com`
 - Port : `1883`
-- Prefix topic : `com.anggoro.iot/{secret_key}/{device_id}`
-- Topics :
-  1. mode : `{prefix}/mode`
-  2. brightness : `{prefix}/brightness`
-  3. speed : `{prefix}/speed`
-  4. color : `{prefix}/color`
 
-### Topic Mode
+### Topics
 
-- Publish message : `0-58`
-- Type : String
-- Example : `13`
+Prefix topic : `com.anggoro.iot/{secret_key}/{device_id}`
 
-### Topic Brightness
+#### Sub (Flutter App ke ESP)
 
-- Publish message : `0-255`
-- Type : String
-- Example : `100`
+Flutter App (publish) -> broker -> ESP (subscribe)
 
-### Topic Speed
+- Config : `{prefix}/sub/config`
+  - Tipe data : String (JSON)
+  - Contoh : `{any}`
+- Mode : `{prefix}/sub/mode`
+  - Tipe data : String
+  - Contoh : `0-58`
+- Brightness : `{prefix}/sub/brightness`
+  - Tipe data : String
+  - Contoh : `0-255`
+- Speed : `{prefix}/sub/speed`
+  - Tipe data : String
+  - Contoh : `0-infinity`
+- Color : `{prefix}/sub/color`
+  - Tipe data : String
+  - Contoh : `[0-255].[0-255].[0-255]` (red.green.blue)
+- Save : `{prefix}/sub/save`
+  - Tipe data : String
+  - Contoh : `{any}`
 
-- Publish message : `0-16000`
-- Type : String
-- Example : `1024`
+#### Pub (ESP ke Flutter App)
 
-### Topic Color
+ESP (publish) -> broker -> Flutter App (subscribe)
 
-- Publish message : `0-255.0-255.0-255`
-- Type : String (red.green.blue)
-- Example : `255.0.100`
+- Uptime : `{prefix}/pub/uptime`
+  - Tipe data : String
+  - Contoh : `12345` (dalam satuan ms)
+- Heap : `{prefix}/pub/heap`
+  - Tipe data : String
+  - Contoh : `12345` (dalam satuan bytes)
+- Config : `{prefix}/pub/config`
+  - Tipe data : String (JSON)
+  - Contoh : `{"mode": 1, ...}`
 
 <hr />
 

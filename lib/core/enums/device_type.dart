@@ -1,0 +1,1 @@
+enum EnumDeviceType { ledStrip, matrix }

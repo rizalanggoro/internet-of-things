@@ -22,9 +22,8 @@ class RepositoryMqttImpl implements RepositoryMqtt {
   }
 
   @override
-  Future<Stream> watchPublishedMessage() {
-    // TODO: implement watchPublishedMessage
-    throw UnimplementedError();
+  Stream<MqttPublishMessage>? watchPublishedMessage() {
+    return _providerMqtt.client.published;
   }
 
   @override
@@ -45,5 +44,38 @@ class RepositoryMqttImpl implements RepositoryMqtt {
   @override
   void listenOnAutoReconnected(void Function() onAutoReconnected) {
     _providerMqtt.client.onAutoReconnected = onAutoReconnected;
+  }
+
+  @override
+  void publishMessage({
+    required String topic,
+    required String message,
+  }) {
+    final builder = MqttClientPayloadBuilder();
+    builder.addString(message);
+
+    final payload = builder.payload;
+    if (payload != null) {
+      _providerMqtt.client.publishMessage(
+        topic,
+        MqttQos.exactlyOnce,
+        payload,
+      );
+    }
+  }
+
+  @override
+  void subscribe({
+    required String topic,
+  }) {
+    _providerMqtt.client.subscribe(
+      topic,
+      MqttQos.exactlyOnce,
+    );
+  }
+
+  @override
+  void unsubscribe({required String topic}) {
+    _providerMqtt.client.unsubscribe(topic);
   }
 }

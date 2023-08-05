@@ -30,6 +30,8 @@ class HomeCubit extends Cubit<HomeState> {
       log('AutoReconnected!');
       emit(HomeStateConnected());
     });
+
+    openMqttConnection();
   }
 
   void closeMqttConnection() {
