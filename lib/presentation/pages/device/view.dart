@@ -476,7 +476,7 @@ class _DeviceViewState extends State<DeviceView> {
                       }
 
                       return Text(
-                        '${NumberFormat.decimalPattern().format(heap)} bytes',
+                        _utils.getFormattedFileSize(heap),
                         style: TextStyle(
                           color: Colors.black.withOpacity(.64),
                           fontSize: _utils.textTheme.bodyMedium!.fontSize,
