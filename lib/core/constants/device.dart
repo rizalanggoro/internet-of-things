@@ -7,14 +7,20 @@ class ConstantDevice {
     ModelDevice(
       id: 'ESP8266-Matrix',
       deviceType: EnumDeviceType.matrix,
-      title: 'LED Matrix',
+      title: 'Matrix Clock',
       iconData: Icons.grid_on_rounded,
+    ),
+    ModelDevice(
+      id: 'ESP8266-Terrace',
+      deviceType: EnumDeviceType.ledStrip,
+      title: 'Terrace LED Strip',
+      iconData: Icons.balcony_rounded,
     ),
     ModelDevice(
       id: 'ESP8266-Desk',
       deviceType: EnumDeviceType.ledStrip,
-      title: 'Desk LED',
-      iconData: Icons.light_rounded,
+      title: 'Desk LED Strip',
+      iconData: Icons.desk_rounded,
     ),
   ];
 }
