@@ -324,7 +324,7 @@ class _DeviceViewState extends State<DeviceView> {
                       }
 
                       return Text(
-                        '${NumberFormat.decimalPattern().format(uptime)} ms',
+                        _utils.getFormattedUptime(uptime),
                         style: TextStyle(
                           color: Colors.black.withOpacity(.64),
                           fontSize: _utils.textTheme.bodyMedium!.fontSize,

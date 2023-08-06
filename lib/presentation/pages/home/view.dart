@@ -200,7 +200,8 @@ class _HomeViewState extends State<HomeView> {
             color: Colors.transparent,
             child: InkWell(
               onTap: () {
-                if (state is HomeStateConnected) {
+                if (state is HomeStateConnected ||
+                    state is HomeStateConnecting) {
                   context.read<HomeCubit>().closeMqttConnection();
                 } else if (state is HomeStateDisconnected) {
                   context.read<HomeCubit>().openMqttConnection();
