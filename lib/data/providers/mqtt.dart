@@ -11,7 +11,7 @@ class ProviderMqtt {
     var clientIdentifier =
         'com.anggoro.iot/flutter-app/${DateTime.now().toIso8601String()}';
     _client = MqttServerClient(Config.broker, clientIdentifier);
-    _client.logging(on: true);
+    // _client.logging(on: true);
     _client.autoReconnect = true;
   }
 }

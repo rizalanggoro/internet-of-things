@@ -6,6 +6,17 @@ sealed class DeviceState {}
 
 class DeviceStateInitial extends DeviceState {}
 
+// auto
+sealed class DeviceStateAuto extends DeviceState {}
+
+class DeviceStateAutoChanged extends DeviceStateAuto {
+  final bool isEnable;
+
+  DeviceStateAutoChanged({
+    required this.isEnable,
+  });
+}
+
 // read
 sealed class DeviceStateRead extends DeviceState {}
 

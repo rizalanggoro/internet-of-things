@@ -7,6 +7,7 @@ class ModelMqtt {
   int brightness;
   int speed;
   Color color;
+  bool autoMode;
 
   ModelMqtt({
     required this.deviceId,
@@ -14,5 +15,6 @@ class ModelMqtt {
     required this.brightness,
     required this.speed,
     required this.color,
+    required this.autoMode,
   });
 }

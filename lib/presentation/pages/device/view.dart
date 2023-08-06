@@ -37,6 +37,7 @@ class DeviceView extends StatefulWidget {
 class _DeviceViewState extends State<DeviceView> {
   late Utils _utils;
 
+  bool _selectedAutoMode = false;
   ModelMode _selectedMode = ConstantMode.values.first;
   double _selectedBrightness = 100;
   int _selectedSpeed = 1024;
@@ -54,16 +55,23 @@ class _DeviceViewState extends State<DeviceView> {
         listener: (context, state) {
           if (state is DeviceStateReadSuccess) {
             final mqtt = state.mqtt;
-            _selectedMode = widget.device.deviceType.isMatrix
-                ? ConstantMode.matrixValues
-                    .where((element) => element.id == mqtt.mode)
-                    .first
-                : ConstantMode.values
-                    .where((element) => element.id == mqtt.mode)
-                    .first;
+
+            try {
+              _selectedMode = widget.device.deviceType.isMatrix
+                  ? ConstantMode.matrixValues
+                      .where((element) => element.id == mqtt.mode)
+                      .first
+                  : ConstantMode.values
+                      .where((element) => element.id == mqtt.mode)
+                      .first;
+            } catch (_) {
+              _selectedMode = ConstantMode.values.first;
+            }
+
             _selectedBrightness = mqtt.brightness.toDouble();
             _selectedSpeed = mqtt.speed;
             _selectedColor = mqtt.color;
+            _selectedAutoMode = mqtt.autoMode;
           }
         },
         builder: (context, state) {
@@ -133,6 +141,7 @@ class _DeviceViewState extends State<DeviceView> {
 
                       _appBar(),
 
+                      _cardAutoMode(),
                       _cardMode(),
                       _cardBrightness(),
                       _cardSpeed(),
@@ -182,6 +191,72 @@ class _DeviceViewState extends State<DeviceView> {
 
           return Container();
         },
+      ),
+    );
+  }
+
+  Widget _cardAutoMode() {
+    return WidgetCard(
+      margin: const EdgeInsets.only(
+        left: 24,
+        right: 24,
+        top: 24,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 24,
+        ),
+        child: Row(
+          children: [
+            WidgetAvatar(
+              child: Icon(
+                Icons.autorenew_rounded,
+                color: ConstantColor.primary,
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Mode otomatis',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: _utils.textTheme.titleMedium!.fontSize,
+                    ),
+                  ),
+                  Text(
+                    'Putar semua mode secara bergantian',
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(.64),
+                      fontSize: _utils.textTheme.bodyMedium!.fontSize,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            BlocConsumer<DeviceCubit, DeviceState>(
+              bloc: context.read<DeviceCubit>(),
+              buildWhen: (previous, current) => current is DeviceStateAuto,
+              listener: (context, state) {
+                if (state is DeviceStateAutoChanged) {
+                  _selectedAutoMode = state.isEnable;
+                }
+              },
+              builder: (context, state) {
+                return Switch(
+                  value: _selectedAutoMode,
+                  onChanged: (value) =>
+                      context.read<DeviceCubit>().changeAutoMode(
+                            isEnable: value,
+                          ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -350,6 +425,7 @@ class _DeviceViewState extends State<DeviceView> {
                       brightness: _selectedBrightness.toInt(),
                       speed: _selectedSpeed,
                       color: _selectedColor,
+                      autoMode: _selectedAutoMode,
                     ),
                   ),
         );
@@ -670,7 +746,7 @@ class _DeviceViewState extends State<DeviceView> {
       margin: const EdgeInsets.only(
         left: 24,
         right: 24,
-        top: 24,
+        top: 8,
       ),
       child: Material(
         color: Colors.transparent,

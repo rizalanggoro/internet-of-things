@@ -94,6 +94,8 @@ class DeviceCubit extends Cubit<DeviceState> {
               int g = int.parse(colorStr.substring(in1 + 1, in2));
               int b = int.parse(colorStr.substring(in2 + 1));
 
+              final String autoMode = json['auto_mode'] ?? 'off';
+
               emit(DeviceStateReadSuccess(
                 mqtt: ModelMqtt(
                   deviceId: deviceId,
@@ -101,6 +103,7 @@ class DeviceCubit extends Cubit<DeviceState> {
                   brightness: int.parse(json['brightness'] ?? '100'),
                   speed: int.parse(json['speed']),
                   color: Color.fromARGB(255, r, g, b),
+                  autoMode: autoMode == 'on',
                 ),
               ));
             } catch (error) {
@@ -141,6 +144,14 @@ class DeviceCubit extends Cubit<DeviceState> {
       topic: topic,
       message: 'config',
     );
+  }
+
+  void changeAutoMode({
+    required bool isEnable,
+  }) {
+    emit(DeviceStateAutoChanged(
+      isEnable: isEnable,
+    ));
   }
 
   void changeMode({
@@ -193,6 +204,7 @@ class DeviceCubit extends Cubit<DeviceState> {
     final subTopicBrightness = '$prefixSub/brightness';
     final subTopicSpeed = '$prefixSub/speed';
     final subTopicColor = '$prefixSub/color';
+    final subTopicAutoMode = '$prefixSub/auto_mode';
 
     emit(DeviceStateSendLoading());
 
@@ -218,6 +230,12 @@ class DeviceCubit extends Cubit<DeviceState> {
     _repositoryMqtt.publishMessage(
       topic: subTopicColor,
       message: '${mqtt.color.red}.${mqtt.color.green}.${mqtt.color.blue}',
+    );
+
+    _queueTopics.add(subTopicAutoMode);
+    _repositoryMqtt.publishMessage(
+      topic: subTopicAutoMode,
+      message: mqtt.autoMode ? 'on' : 'off',
     );
   }
 

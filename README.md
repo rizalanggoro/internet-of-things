@@ -55,6 +55,9 @@ Flutter App (publish) -> broker -> ESP (subscribe)
 - Save : `{prefix}/sub/save`
   - Tipe data : String
   - Contoh : `{any}`
+- Auto Mode : `{prefix}/sub/auto_mode`
+  - Tipe data : String
+  - Contoh : `{on/off}`
 
 #### Pub (ESP ke Flutter App)
 
@@ -74,9 +77,10 @@ ESP (publish) -> broker -> Flutter App (subscribe)
 
 ## Dokumentasi Flutter
 
-- Packages :
-  1. flutter_bloc
-  2. bloc
-  3. go_router
-  4. mqtt_client
-  5. get_it
+Packages :
+
+- flutter_bloc
+- bloc
+- go_router
+- mqtt_client
+- get_it
