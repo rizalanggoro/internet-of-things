@@ -87,10 +87,10 @@ Packages :
 
 ### Screenshot
 
-| Halaman                                   | Gambar                                                                        |
-| ----------------------------------------- | ----------------------------------------------------------------------------- |
-| Utama                                     | ![](screenshots/home%20page.jpg)                                              |
-| Perangkat                                 | ![](screenshots/device%20page%201.jpg) ![](screenshots/device%20page%202.jpg) |
-| Perangkat (Mendapatkan konfigurasi)       | ![](screenshots/getting%20device%20config%20page.jpg)                         |
-| Perangkat (Error mendapatkan konfigurasi) | ![](screenshots/failure%20getting%20device%20config%20page.jpg)               |
-| Pilih mode                                | ![](screenshots/select%20mode%20page.jpg)                                     |
+| Halaman                                   | Gambar                                                                                                          |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Utama                                     | <img src="screenshots/home page.jpg" width="240" />                                                             |
+| Perangkat                                 | <img src="screenshots/device page 1.jpg" width="240" /> <img src="screenshots/device page 2.jpg" width="240" /> |
+| Perangkat (Mendapatkan konfigurasi)       | <img src="screenshots/getting device config page.jpg" width="240" />                                            |
+| Perangkat (Error mendapatkan konfigurasi) | <img src="screenshots/failure getting device config page.jpg" width="240" />                                    |
+| Pilih mode                                | <img src="screenshots/select mode page.jpg" width="240" />                                                      |
