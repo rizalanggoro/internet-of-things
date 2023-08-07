@@ -84,3 +84,13 @@ Packages :
 - go_router
 - mqtt_client
 - get_it
+
+### Screenshot
+
+| Halaman                                   | Gambar                                                                        |
+| ----------------------------------------- | ----------------------------------------------------------------------------- |
+| Utama                                     | ![](screenshots/home%20page.jpg)                                              |
+| Perangkat                                 | ![](screenshots/device%20page%201.jpg) ![](screenshots/device%20page%202.jpg) |
+| Perangkat (Mendapatkan konfigurasi)       | ![](screenshots/getting%20device%20config%20page.jpg)                         |
+| Perangkat (Error mendapatkan konfigurasi) | ![](screenshots/failure%20getting%20device%20config%20page.jpg)               |
+| Pilih mode                                | ![](screenshots/select%20mode%20page.jpg)                                     |
