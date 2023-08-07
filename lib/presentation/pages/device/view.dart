@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -20,7 +18,6 @@ import 'package:internet_of_things/presentation/widgets/button_secondary.dart';
 import 'package:internet_of_things/presentation/widgets/icon_button_secondary.dart';
 import 'package:internet_of_things/presentation/widgets/card.dart';
 import 'package:internet_of_things/presentation/widgets/circle_icon_button.dart';
-import 'package:intl/intl.dart';
 
 class DeviceView extends StatefulWidget {
   final ModelDevice device;

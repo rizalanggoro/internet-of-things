@@ -14,11 +14,12 @@ import 'package:mqtt_client/mqtt_client.dart';
 
 class DeviceCubit extends Cubit<DeviceState> {
   final String deviceId;
-
   final RepositoryMqtt _repositoryMqtt = dependencyInjector();
+
   final List<String> _queueTopics = [];
   StreamSubscription? _subscriptionPublishedMessage,
       _subscriptionReceivedMessage;
+  bool _isGotDeviceConfig = false;
 
   @override
   Future<void> close() {
@@ -106,6 +107,8 @@ class DeviceCubit extends Cubit<DeviceState> {
                   autoMode: autoMode == 'on',
                 ),
               ));
+
+              _isGotDeviceConfig = true;
             } catch (error) {
               log(error.toString());
               emit(DeviceStateReadFailure());
@@ -144,6 +147,15 @@ class DeviceCubit extends Cubit<DeviceState> {
       topic: topic,
       message: 'config',
     );
+
+    Future.delayed(const Duration(seconds: 5), () {
+      if (!_isGotDeviceConfig) {
+        emit(DeviceStateReadFailure());
+        log('Timeout getting device config');
+      } else {
+        log('Got device config');
+      }
+    });
   }
 
   void changeAutoMode({
