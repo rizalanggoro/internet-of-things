@@ -46,14 +46,16 @@ class DeviceCubit extends Cubit<DeviceState> {
       _subscriptionPublishedMessage?.cancel();
       _subscriptionPublishedMessage = streamPublishedMessage.listen((event) {
         final topic = event.variableHeader?.topicName;
-        if (topic != null) {
+        if (topic != null &&
+            !topic.contains('uptime') &&
+            !topic.contains('heap')) {
           if (_queueTopics.contains(topic)) {
             _queueTopics.remove(topic);
           }
-        }
 
-        if (_queueTopics.isEmpty) {
-          emit(DeviceStateSendSuccess());
+          if (_queueTopics.isEmpty) {
+            emit(DeviceStateSendSuccess());
+          }
         }
       });
     }
