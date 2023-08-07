@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:internet_of_things/core/constants/color.dart';
 
 class WidgetCircleIconButton extends StatelessWidget {
   final EdgeInsets? margin;
@@ -18,8 +17,9 @@ class WidgetCircleIconButton extends StatelessWidget {
     return Container(
       margin: margin,
       decoration: BoxDecoration(
+        color: Colors.white.withOpacity(.08),
         border: Border.all(
-          color: Colors.black.withOpacity(.12),
+          color: Colors.white.withOpacity(.24),
         ),
         shape: BoxShape.circle,
       ),
@@ -33,7 +33,7 @@ class WidgetCircleIconButton extends StatelessWidget {
             width: 48,
             child: Icon(
               iconData,
-              color: ConstantColor.primary,
+              color: Colors.white,
             ),
           ),
         ),

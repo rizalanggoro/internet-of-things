@@ -45,7 +45,7 @@ class _DeviceViewState extends State<DeviceView> {
     _utils = Utils(context: context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ConstantColor.backgroundColor,
       body: BlocConsumer<DeviceCubit, DeviceState>(
         bloc: context.read<DeviceCubit>(),
         buildWhen: (previous, current) => current is DeviceStateRead,
@@ -84,7 +84,7 @@ class _DeviceViewState extends State<DeviceView> {
                     'Mendapatkan konfigurasi\nperangkat...',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.black.withOpacity(.64),
+                      color: Colors.white.withOpacity(.64),
                       fontSize: _utils.textTheme.bodyMedium!.fontSize,
                     ),
                   ),
@@ -102,7 +102,7 @@ class _DeviceViewState extends State<DeviceView> {
                     Text(
                       'Error!',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: _utils.textTheme.titleLarge!.fontSize,
                       ),
@@ -112,7 +112,7 @@ class _DeviceViewState extends State<DeviceView> {
                       'Gagal mendapatkan konfigurasi perangkat! Pastikan perangkat IoT dan smartphone Anda terhubung ke internet!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.black.withOpacity(.64),
+                        color: Colors.white.withOpacity(.64),
                         fontSize: _utils.textTheme.bodyMedium!.fontSize,
                       ),
                     ),
@@ -153,7 +153,7 @@ class _DeviceViewState extends State<DeviceView> {
                         child: Text(
                           'Lainnya',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: _utils.textTheme.titleMedium!.fontSize,
                           ),
@@ -209,7 +209,7 @@ class _DeviceViewState extends State<DeviceView> {
             WidgetAvatar(
               child: Icon(
                 Icons.autorenew_rounded,
-                color: ConstantColor.primary,
+                color: Colors.white.withOpacity(.64),
               ),
             ),
             const SizedBox(width: 16),
@@ -220,14 +220,14 @@ class _DeviceViewState extends State<DeviceView> {
                   Text(
                     'Mode otomatis',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: _utils.textTheme.titleMedium!.fontSize,
                     ),
                   ),
                   Text(
                     'Putar semua mode secara bergantian',
                     style: TextStyle(
-                      color: Colors.black.withOpacity(.64),
+                      color: Colors.white.withOpacity(.64),
                       fontSize: _utils.textTheme.bodyMedium!.fontSize,
                     ),
                   ),
@@ -244,6 +244,7 @@ class _DeviceViewState extends State<DeviceView> {
               },
               builder: (context, state) {
                 return Switch(
+                  inactiveTrackColor: Colors.transparent,
                   value: _selectedAutoMode,
                   onChanged: (value) =>
                       context.read<DeviceCubit>().changeAutoMode(
@@ -295,7 +296,7 @@ class _DeviceViewState extends State<DeviceView> {
             WidgetAvatar(
               child: Icon(
                 Icons.av_timer_rounded,
-                color: ConstantColor.primary,
+                color: Colors.white.withOpacity(.64),
               ),
             ),
             const SizedBox(width: 16),
@@ -306,7 +307,7 @@ class _DeviceViewState extends State<DeviceView> {
                   Text(
                     'Waktu menyala',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: _utils.textTheme.titleMedium!.fontSize,
                     ),
                   ),
@@ -323,7 +324,7 @@ class _DeviceViewState extends State<DeviceView> {
                       return Text(
                         _utils.getFormattedUptime(uptime),
                         style: TextStyle(
-                          color: Colors.black.withOpacity(.64),
+                          color: Colors.white.withOpacity(.64),
                           fontSize: _utils.textTheme.bodyMedium!.fontSize,
                         ),
                       );
@@ -357,7 +358,7 @@ class _DeviceViewState extends State<DeviceView> {
                 WidgetAvatar(
                   child: Icon(
                     Icons.save_rounded,
-                    color: ConstantColor.primary,
+                    color: Colors.white.withOpacity(.64),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -368,14 +369,14 @@ class _DeviceViewState extends State<DeviceView> {
                       Text(
                         'Simpan',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: _utils.textTheme.titleMedium!.fontSize,
                         ),
                       ),
                       Text(
                         'Simpan pengaturan saat ini ke dalam memori mikrokontroler',
                         style: TextStyle(
-                          color: Colors.black.withOpacity(.64),
+                          color: Colors.white.withOpacity(.64),
                         ),
                       ),
                     ],
@@ -412,7 +413,7 @@ class _DeviceViewState extends State<DeviceView> {
 
         return WidgetButton(
           margin: const EdgeInsets.all(24),
-          text: isSending ? 'Mengirim...' : 'Kirim',
+          text: isSending ? 'Menerapkan perubahan...' : 'Terapkan perubahan',
           onTap: isSending
               ? null
               : () => context.read<DeviceCubit>().send(
@@ -447,7 +448,7 @@ class _DeviceViewState extends State<DeviceView> {
             WidgetAvatar(
               child: Icon(
                 Icons.memory_rounded,
-                color: ConstantColor.primary,
+                color: Colors.white.withOpacity(.64),
               ),
             ),
             const SizedBox(width: 16),
@@ -458,7 +459,7 @@ class _DeviceViewState extends State<DeviceView> {
                   Text(
                     'Memori bebas',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: _utils.textTheme.titleMedium!.fontSize,
                     ),
                   ),
@@ -475,7 +476,7 @@ class _DeviceViewState extends State<DeviceView> {
                       return Text(
                         _utils.getFormattedFileSize(heap),
                         style: TextStyle(
-                          color: Colors.black.withOpacity(.64),
+                          color: Colors.white.withOpacity(.64),
                           fontSize: _utils.textTheme.bodyMedium!.fontSize,
                         ),
                       );
@@ -511,7 +512,7 @@ class _DeviceViewState extends State<DeviceView> {
                 WidgetAvatar(
                   child: Icon(
                     Icons.color_lens_rounded,
-                    color: ConstantColor.primary,
+                    color: Colors.white.withOpacity(.64),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -521,7 +522,7 @@ class _DeviceViewState extends State<DeviceView> {
                     Text(
                       'Warna',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: _utils.textTheme.titleMedium!.fontSize,
                       ),
                     ),
@@ -540,7 +541,7 @@ class _DeviceViewState extends State<DeviceView> {
                           'G: ${_selectedColor.green}, '
                           'B: ${_selectedColor.blue}',
                           style: TextStyle(
-                            color: Colors.black.withOpacity(.64),
+                            color: Colors.white.withOpacity(.64),
                             fontSize: _utils.textTheme.bodyMedium!.fontSize,
                           ),
                         );
@@ -587,7 +588,7 @@ class _DeviceViewState extends State<DeviceView> {
                 WidgetAvatar(
                   child: Icon(
                     Icons.speed_rounded,
-                    color: ConstantColor.primary,
+                    color: Colors.white.withOpacity(.64),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -598,7 +599,7 @@ class _DeviceViewState extends State<DeviceView> {
                       Text(
                         'Kecepatan',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: _utils.textTheme.titleMedium!.fontSize,
                         ),
                       ),
@@ -615,7 +616,7 @@ class _DeviceViewState extends State<DeviceView> {
                           return Text(
                             '$_selectedSpeed ms',
                             style: TextStyle(
-                              color: Colors.black.withOpacity(.64),
+                              color: Colors.white.withOpacity(.64),
                               fontSize: _utils.textTheme.bodyMedium!.fontSize,
                             ),
                           );
@@ -675,7 +676,7 @@ class _DeviceViewState extends State<DeviceView> {
                 WidgetAvatar(
                   child: Icon(
                     Icons.wb_sunny_rounded,
-                    color: ConstantColor.primary,
+                    color: Colors.white.withOpacity(.64),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -686,7 +687,7 @@ class _DeviceViewState extends State<DeviceView> {
                       Text(
                         'Kecerahan',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: _utils.textTheme.titleMedium!.fontSize,
                         ),
                       ),
@@ -698,7 +699,7 @@ class _DeviceViewState extends State<DeviceView> {
                           return Text(
                             '${_selectedBrightness.toInt()} dari 250',
                             style: TextStyle(
-                              color: Colors.black.withOpacity(.64),
+                              color: Colors.white.withOpacity(.64),
                               fontSize: _utils.textTheme.bodyMedium!.fontSize,
                             ),
                           );
@@ -720,15 +721,20 @@ class _DeviceViewState extends State<DeviceView> {
               }
             },
             builder: (context, state) {
-              return Slider(
-                value: _selectedBrightness,
-                onChanged: (value) =>
-                    context.read<DeviceCubit>().changeBrightness(
-                          value: value,
-                        ),
-                max: 250,
-                min: 0,
-                divisions: 10,
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Slider(
+                  thumbColor: Colors.white,
+                  inactiveColor: Colors.white.withOpacity(.16),
+                  value: _selectedBrightness,
+                  onChanged: (value) =>
+                      context.read<DeviceCubit>().changeBrightness(
+                            value: value,
+                          ),
+                  max: 250,
+                  min: 0,
+                  divisions: 10,
+                ),
               );
             },
           ),
@@ -774,7 +780,7 @@ class _DeviceViewState extends State<DeviceView> {
                 WidgetAvatar(
                   child: Icon(
                     Icons.category_rounded,
-                    color: ConstantColor.primary,
+                    color: Colors.white.withOpacity(.64),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -785,7 +791,7 @@ class _DeviceViewState extends State<DeviceView> {
                       Text(
                         'Mode',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: _utils.textTheme.titleMedium!.fontSize,
                         ),
                       ),
@@ -802,7 +808,7 @@ class _DeviceViewState extends State<DeviceView> {
                           return Text(
                             _selectedMode.title,
                             style: TextStyle(
-                              color: Colors.black.withOpacity(.64),
+                              color: Colors.white.withOpacity(.64),
                               fontSize: _utils.textTheme.bodyMedium!.fontSize,
                             ),
                           );
@@ -813,7 +819,7 @@ class _DeviceViewState extends State<DeviceView> {
                 ),
                 Icon(
                   Icons.chevron_right_rounded,
-                  color: Colors.black.withOpacity(.48),
+                  color: Colors.white.withOpacity(.32),
                 ),
               ],
             ),
@@ -844,7 +850,7 @@ class _DeviceViewState extends State<DeviceView> {
                 Text(
                   widget.device.title,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: _utils.textTheme.titleLarge!.fontSize,
                   ),
@@ -852,7 +858,7 @@ class _DeviceViewState extends State<DeviceView> {
                 Text(
                   'ID: ${widget.device.id}',
                   style: TextStyle(
-                    color: Colors.black.withOpacity(.64),
+                    color: Colors.white.withOpacity(.64),
                     fontSize: _utils.textTheme.bodyMedium!.fontSize,
                   ),
                 ),

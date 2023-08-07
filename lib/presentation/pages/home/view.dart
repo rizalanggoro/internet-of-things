@@ -26,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
     _utils = Utils(context: context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ConstantColor.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,6 +46,7 @@ class _HomeViewState extends State<HomeView> {
               child: Text(
                 'Perangkat',
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: _utils.textTheme.titleMedium!.fontSize,
                   fontWeight: FontWeight.bold,
                 ),
@@ -55,14 +56,15 @@ class _HomeViewState extends State<HomeView> {
               padding: const EdgeInsets.only(
                 left: 24,
                 right: 24,
-                bottom: 8,
+                bottom: 16,
+                top: 4,
               ),
               child: Text(
                 'Beberapa perangkat internet yang tertaut dan dapat '
                 'dikendalikan dengan protokol MQTT',
                 style: TextStyle(
                   fontSize: _utils.textTheme.bodyMedium!.fontSize,
-                  color: Colors.black.withOpacity(.64),
+                  color: Colors.white.withOpacity(.64),
                 ),
               ),
             ),
@@ -88,7 +90,7 @@ class _HomeViewState extends State<HomeView> {
           Text(
             'Internet of things',
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: _utils.textTheme.headlineSmall!.fontSize,
             ),
@@ -96,7 +98,7 @@ class _HomeViewState extends State<HomeView> {
           Text(
             Config.broker,
             style: TextStyle(
-              color: Colors.black.withOpacity(.64),
+              color: Colors.white.withOpacity(.64),
               fontSize: _utils.textTheme.bodyMedium!.fontSize,
             ),
           ),
@@ -132,7 +134,7 @@ class _HomeViewState extends State<HomeView> {
                     margin: const EdgeInsets.only(right: 16),
                     child: Icon(
                       device.iconData,
-                      color: ConstantColor.primary,
+                      color: Colors.white.withOpacity(.64),
                     ),
                   ),
                   Expanded(
@@ -142,14 +144,14 @@ class _HomeViewState extends State<HomeView> {
                         Text(
                           device.title,
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: _utils.textTheme.titleMedium!.fontSize,
                           ),
                         ),
                         Text(
                           'ID: ${device.id}',
                           style: TextStyle(
-                            color: Colors.black.withOpacity(.64),
+                            color: Colors.white.withOpacity(.64),
                             fontSize: _utils.textTheme.bodyMedium!.fontSize,
                           ),
                         ),
@@ -158,7 +160,7 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   Icon(
                     Icons.chevron_right_rounded,
-                    color: Colors.black.withOpacity(.48),
+                    color: Colors.white.withOpacity(.32),
                   ),
                 ],
               ),
@@ -217,7 +219,7 @@ class _HomeViewState extends State<HomeView> {
                     WidgetAvatar(
                       child: Icon(
                         Icons.wifi_rounded,
-                        color: ConstantColor.primary,
+                        color: Colors.white.withOpacity(.64),
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -228,14 +230,14 @@ class _HomeViewState extends State<HomeView> {
                           Text(
                             title,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontSize: _utils.textTheme.titleMedium!.fontSize,
                             ),
                           ),
                           Text(
                             subtitle,
                             style: TextStyle(
-                              color: Colors.black.withOpacity(.64),
+                              color: Colors.white.withOpacity(.64),
                               fontSize: _utils.textTheme.bodyMedium!.fontSize,
                             ),
                           ),

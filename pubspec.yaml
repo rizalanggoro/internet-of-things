@@ -43,6 +43,7 @@ dependencies:
   flutter_statusbarcolor_ns: ^0.5.0
   flutter_colorpicker: ^1.0.3
   intl: ^0.18.1
+  flutter_native_splash: ^2.3.1
 
 dev_dependencies:
   flutter_test:

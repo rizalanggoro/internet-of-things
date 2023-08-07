@@ -20,9 +20,9 @@ class WidgetIconButtonSecondary extends StatelessWidget {
       width: double.infinity,
       height: 48,
       decoration: BoxDecoration(
-        color: ConstantColor.primary.withOpacity(.04),
+        color: ConstantColor.primary.withOpacity(.24),
         border: Border.all(
-          color: ConstantColor.primary.withOpacity(.12),
+          color: ConstantColor.primary.withOpacity(.24 * 3),
         ),
         borderRadius: const BorderRadius.all(
           Radius.circular(12),
@@ -37,7 +37,7 @@ class WidgetIconButtonSecondary extends StatelessWidget {
             alignment: Alignment.center,
             child: Icon(
               iconData,
-              color: ConstantColor.primary,
+              color: Colors.white,
             ),
           ),
         ),

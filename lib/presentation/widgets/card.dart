@@ -15,8 +15,9 @@ class WidgetCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
+        color: Colors.white.withOpacity(.08),
         border: Border.all(
-          color: Colors.black.withOpacity(.12),
+          color: Colors.white.withOpacity(.24),
         ),
         borderRadius: const BorderRadius.all(
           Radius.circular(16),

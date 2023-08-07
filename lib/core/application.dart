@@ -13,7 +13,8 @@ class Application extends StatelessWidget {
 
     return MaterialApp.router(
       routerConfig: RoutesConfig.config,
-      theme: ThemeData(
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData(
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(),
         colorSchemeSeed: ConstantColor.primary,

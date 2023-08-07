@@ -15,7 +15,7 @@ class WidgetAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ConstantColor.primary.withOpacity(.12),
+        color: ConstantColor.primary,
         borderRadius: const BorderRadius.all(
           Radius.circular(12),
         ),

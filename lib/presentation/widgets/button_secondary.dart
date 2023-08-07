@@ -23,9 +23,9 @@ class WidgetButtonSecondary extends StatelessWidget {
       width: double.infinity,
       height: 48,
       decoration: BoxDecoration(
-        color: ConstantColor.primary.withOpacity(.04),
+        color: ConstantColor.primary.withOpacity(.24),
         border: Border.all(
-          color: ConstantColor.primary.withOpacity(.12),
+          color: ConstantColor.primary.withOpacity(.24 * 3),
         ),
         borderRadius: const BorderRadius.all(
           Radius.circular(12),
@@ -41,7 +41,7 @@ class WidgetButtonSecondary extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                color: ConstantColor.primary,
+                color: Colors.white,
                 fontSize: utils.textTheme.bodyMedium!.fontSize,
               ),
             ),

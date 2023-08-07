@@ -31,7 +31,7 @@ class _SelectModeViewState extends State<SelectModeView> {
     _utils = Utils(context: context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ConstantColor.backgroundColor,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -75,7 +75,7 @@ class _SelectModeViewState extends State<SelectModeView> {
                     child: isSelected
                         ? Icon(
                             Icons.done_rounded,
-                            color: ConstantColor.primary,
+                            color: Colors.white.withOpacity(.64),
                           )
                         : Container(),
                   ),
@@ -87,7 +87,7 @@ class _SelectModeViewState extends State<SelectModeView> {
                         Text(
                           mode.title,
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: _utils.textTheme.titleMedium!.fontSize,
                           ),
                         ),
@@ -95,7 +95,7 @@ class _SelectModeViewState extends State<SelectModeView> {
                           Text(
                             mode.subtitle!,
                             style: TextStyle(
-                              color: Colors.black.withOpacity(.64),
+                              color: Colors.white.withOpacity(.64),
                               fontSize: _utils.textTheme.bodyMedium!.fontSize,
                             ),
                           ),
@@ -122,13 +122,13 @@ class _SelectModeViewState extends State<SelectModeView> {
         children: [
           WidgetCircleIconButton(
             iconData: Icons.chevron_left_rounded,
-            onTap: () => {},
+            onTap: () => context.pop(),
           ),
           const SizedBox(width: 16),
           Text(
             'Pilih mode',
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: _utils.textTheme.titleLarge!.fontSize,
             ),
