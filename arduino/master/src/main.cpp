@@ -89,8 +89,6 @@ String currentAutoMode = "off";
 #define PATH_COLOR "/c.txt"
 #define PATH_AUTO_MODE "/a_m.txt"
 
-uint8_t broadcastAddress[] = {0xE8, 0xDB, 0x84, 0xDA, 0x90, 0x0B};
-
 void setup() {
   Serial.begin(115200);
   delay(2000);
@@ -114,7 +112,7 @@ void setup() {
   Serial.println("Mount LittleFS");
   if (!LittleFS.begin()) {
     Serial.println("LittleFS mount failed");
-    return;
+    // return;
   }
 
   // initialize pin

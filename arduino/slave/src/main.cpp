@@ -202,7 +202,7 @@ void setup() {
   // initialize ws2812b
   fx.init();
   fx.setBrightness(100);
-  fx.setColor(BLUE);
+  fx.setColor(WS2812FX::Color(100, 0, 255));
   fx.setSpeed(1024);
 
 #ifdef LM
@@ -229,7 +229,7 @@ void loop() {
 
   if (currentAutoMode == "on") {
     unsigned long currentMillis = millis();
-    if (currentMillis - autoModePrevMillis >= 2000) {
+    if (currentMillis - autoModePrevMillis >= 15000) {
       autoModePrevMillis = currentMillis;
 
       fx.setMode(allModes[autoModeIndex]);
