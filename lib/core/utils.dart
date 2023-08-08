@@ -24,6 +24,28 @@ class Utils {
     return '$hoursString$minutesString$secondsString';
   }
 
+  String getLitSince(int milliseconds) {
+    DateTime currentTime = DateTime.now();
+    Duration timeDifference = Duration(milliseconds: milliseconds);
+    DateTime startTime = currentTime.subtract(timeDifference);
+
+    var hour = '0';
+    if (startTime.hour > 9) {
+      hour = startTime.hour.toString();
+    } else {
+      hour += startTime.hour.toString();
+    }
+
+    var minute = '0';
+    if (startTime.minute > 9) {
+      minute = startTime.minute.toString();
+    } else {
+      minute += startTime.minute.toString();
+    }
+
+    return 'Sejak $hour.$minute';
+  }
+
   String getFormattedFileSize(int bytes) {
     const int kb = 1024;
     const int mb = kb * 1024;

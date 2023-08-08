@@ -321,12 +321,24 @@ class _DeviceViewState extends State<DeviceView> {
                         uptime = state.value;
                       }
 
-                      return Text(
-                        _utils.getFormattedUptime(uptime),
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(.64),
-                          fontSize: _utils.textTheme.bodyMedium!.fontSize,
-                        ),
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _utils.getFormattedUptime(uptime),
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(.64),
+                              fontSize: _utils.textTheme.bodyMedium!.fontSize,
+                            ),
+                          ),
+                          Text(
+                            _utils.getLitSince(uptime),
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(.64),
+                              fontSize: _utils.textTheme.bodyMedium!.fontSize,
+                            ),
+                          ),
+                        ],
                       );
                     },
                   ),
